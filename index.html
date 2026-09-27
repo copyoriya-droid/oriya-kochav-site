@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>אוריה כוכב — פיצוח יצירתי</title>
+<meta name="description" content="בריף מבולגן פנימה. רעיון, קונספט, מסר, תוצר, תנועה — החוצה.">
+<meta name="theme-color" content="#1B1224">
+<!-- DEPLOY STEP: patch og:url and og:image with live URL -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="אוריה כוכב — פיצוח יצירתי">
+<meta property="og:description" content="בריף מבולגן פנימה. רעיון, קונספט, מסר, תוצר, תנועה — החוצה.">
+<meta property="og:url" content="https://famous-cactus-bb77a3.netlify.app">
+<meta property="og:image" content="https://famous-cactus-bb77a3.netlify.app/assets/img/og-preview.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&family=Rubik:ital,wght@0,400;0,700;0,800;1,400;1,500&family=Rubik+Dirt&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#1B1224;
+  --panel:#2C1D3D;
+  --accent:#F5CE24;
+  --accent-hover:#E5BC14;
+  --accent-muted:rgba(245,206,36,.12);
+  --text-primary:#F6F1EA;
+  --text-secondary:#B7A6C6;
+  --lilac:#8C6BAE;            /* דקורטיבי בלבד: קווים, מסגרות, זוהר */
+  --lilac-text:#A98BC7;       /* לטקסט. עובר תקן נגישות AA על הפאנל */
+  /* פונט התגיות: Rubik נטוי. יש לו קובץ italic אמיתי עם עברית,
+     אז ההטיה מעוצבת ולא מזויפת ע"י הדפדפן. */
+  --mono:'Rubik','Assistant',sans-serif;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --ease-in-out:cubic-bezier(.65,0,.35,1);
+  --tshadow:0 1px 2px rgba(5,5,10,.95),0 3px 12px rgba(5,5,10,.78),0 10px 44px rgba(5,5,10,.8);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{overflow-x:clip;font-family:'Assistant',sans-serif;font-weight:400;color:var(--text-primary);background:var(--canvas);line-height:1.7;direction:rtl;text-align:right;opacity:0;transition:opacity .6s var(--ease-out)}
+body.loaded{opacity:1}
+
+/* Skip link */
+.skip{position:absolute;top:-100%;right:1rem;background:var(--accent);color:var(--canvas);padding:.5rem 1rem;border-radius:6px;font-weight:700;z-index:1000;text-decoration:none}
+.skip:focus{top:1rem}
+
+/* ---- NAV ---- */
+nav{position:fixed;top:0;right:0;left:0;z-index:90;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s var(--ease-out),backdrop-filter .4s}
+nav.scrolled{background:rgba(27,18,36,.88);backdrop-filter:blur(12px)}
+.nav-name{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:1.15rem;color:var(--text-primary);text-decoration:none;letter-spacing:-.02em}
+.nav-star{color:var(--accent);margin-right:.35em;font-size:.9em}
+.nav-links{display:flex;gap:1.8rem;align-items:center;list-style:none}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.95rem;font-weight:400;transition:color .25s}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--text-primary)}
+.nav-cta{background:var(--accent);color:var(--canvas);padding:.45rem 1.1rem;border-radius:6px;font-weight:700;font-size:.92rem;text-decoration:none;transition:background .25s,transform .25s}
+.nav-cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.nav-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--text-primary)}
+.nav-toggle svg{width:24px;height:24px}
+@media(max-width:720px){
+  .nav-links{display:none;position:fixed;top:0;right:0;left:0;bottom:0;background:rgba(27,18,36,.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:100}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1.2rem;color:var(--text-primary)}
+  .nav-toggle{display:block;z-index:101}
+  nav{padding:.8rem 1.2rem}
+}
+
+/* ---- HERO ---- */
+/* 220vh ולא 300vh: ב-300 נשאר כמעט מסך שלם של גלילה מתה
+   אחרי שהבלוק השלישי כבר הופיע, וזה נראה כמו חור לפני "הבעיה". */
+#hero{position:relative;height:220vh}
+.hero-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 130% 90% at 50% 40%,#2C1D3D 0%,#1B1224 55%,#0F0A17 100%)}
+.hero-grain{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:.18;pointer-events:none}
+.hero-glow-1{background:var(--lilac);top:-10%;right:-10%;animation:drift 25s var(--ease-in-out) infinite alternate}
+.hero-glow-2{background:var(--accent);bottom:-15%;left:-5%;animation:drift 30s var(--ease-in-out) infinite alternate-reverse}
+@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(40px,30px)}}
+.hero-scrim{position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 45%,rgba(10,10,18,0) 20%,rgba(10,10,18,.55) 100%);pointer-events:none}
+
+.hero-content{position:relative;z-index:2;max-width:860px;padding:0 2rem;text-align:center}
+.band{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 2rem;pointer-events:none;will-change:opacity}
+.band.active{pointer-events:auto}
+.band::before{content:"";position:absolute;inset:-4%;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 74% 62% at 50% 50%,rgba(5,5,10,.58) 0%,rgba(5,5,10,.38) 46%,rgba(5,5,10,0) 76%)}
+
+.hero-name{font-family:'Rubik Dirt','Assistant',sans-serif;font-weight:400;font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.15;letter-spacing:-.03em;margin-bottom:.6rem;text-shadow:var(--tshadow)}
+.hero-tagline{font-family:var(--mono);font-style:italic;font-size:clamp(.95rem,1.7vw,1.15rem);color:var(--accent);letter-spacing:.04em;margin-bottom:1.8rem;text-shadow:var(--tshadow)}
+.hero-line{font-family:'Rubik','Assistant',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.8vw,2.8rem);line-height:1.3;letter-spacing:-.02em;text-shadow:var(--tshadow);max-width:700px;margin:0 auto}
+.hero-sub{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--text-secondary);font-weight:300;margin-top:1rem;text-shadow:var(--tshadow)}
+.hero-arrow{font-family:var(--mono);font-style:italic;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--accent);letter-spacing:.06em;margin-top:.8rem;text-shadow:var(--tshadow)}
+
+.hero-cta-row{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .25s var(--ease-out),transform .25s var(--ease-out),box-shadow .25s;text-shadow:none;cursor:pointer;border:none}
+.btn-accent{background:var(--accent);color:var(--canvas)}
+.btn-accent:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,206,36,.25)}
+.btn-ghost{background:transparent;color:var(--text-primary);border:1px solid rgba(246,241,234,.2)}
+.btn-ghost:hover{border-color:rgba(246,241,234,.4);background:rgba(246,241,234,.05)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(pointer:coarse){.btn{min-height:44px}}
+
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text-secondary);font-size:.7rem;font-family:var(--mono);font-style:italic;letter-spacing:.1em;opacity:.6;transition:opacity .5s}
+.scroll-cue svg{width:20px;height:20px;animation:bounce 2s var(--ease-in-out) infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ---- HERO: MOBILE = STATIC, NOT SCROLL-DRIVEN ----
+   במובייל ההירו הנגלל השאיר מסך ראשון ריק.
+   כאן הוא הופך לפתיח רגיל: כל הטקסט גלוי מיד. */
+@media(max-width:720px){
+  #hero{height:auto}
+  .hero-sticky{position:static;height:auto;min-height:auto;display:block;padding:6.5rem 0 2rem}
+  .hero-bg,.hero-scrim,.hero-grain{position:fixed}
+  .band{position:static;inset:auto;display:block;opacity:1!important;padding:0 1.2rem;pointer-events:auto}
+  .band::before{display:none}
+  .band[data-band="1"],.band[data-band="2"]{margin-top:3.2rem;padding-top:3.2rem;border-top:1px solid rgba(140,107,174,.14)}
+  .hero-content{max-width:none}
+  .scroll-cue{display:none}
+  /* במובייל הכפתורים נערמים — הראשי (הצהוב) חייב להיות למעלה */
+  .hero-cta-row{flex-direction:column-reverse;align-items:center}
+}
+
+/* ---- SECTIONS SHARED ---- */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+/* התגית היא מרקור צהוב עם טקסט כהה בפנים — צהוב קטן על סגול לא נקרא */
+.section-tag{display:inline-block;font-family:var(--mono);font-style:italic;font-size:.82rem;font-weight:700;color:var(--canvas);background:var(--accent);letter-spacing:.04em;padding:.32rem .85rem;border-radius:5px;margin-bottom:1.1rem}
+.section-h2{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.25;letter-spacing:-.02em;margin-bottom:1rem}
+.section-sub{font-size:1.1rem;color:var(--text-secondary);font-weight:300;max-width:600px;margin-bottom:3rem;line-height:1.7}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal:nth-child(2){transition-delay:80ms}
+.reveal:nth-child(3){transition-delay:160ms}
+.reveal:nth-child(4){transition-delay:240ms}
+.reveal.in:hover{transition-delay:0ms}
+
+/* ---- PROBLEM ---- */
+#problem{background:var(--canvas);padding-top:4rem}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.pain-card{background:var(--panel);border-radius:14px;padding:2rem 1.8rem;border:1px solid rgba(140,107,174,.1);transition:border-color .3s var(--ease-out),transform .3s var(--ease-out)}
+.pain-card:hover{border-color:rgba(140,107,174,.25);transform:translateY(-3px)}
+.pain-num{font-family:var(--mono);font-style:italic;font-size:.85rem;color:var(--accent);opacity:.85;margin-bottom:1rem}
+.pain-title{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:.8rem;line-height:1.35}
+.pain-body{font-size:1rem;color:var(--text-secondary);font-weight:300;line-height:1.75}
+@media(max-width:768px){.pain-grid{grid-template-columns:1fr}}
+
+/* ---- PROCESS STEPS (בתוך סקשן "איך אני עובדת") ---- */
+.process-steps{display:flex;gap:0;margin-top:3rem;margin-bottom:4rem;position:relative}
+.process-steps::before{content:"";position:absolute;top:28px;right:40px;left:40px;height:2px;background:linear-gradient(to left,var(--accent),var(--lilac),transparent);opacity:.2}
+.step{flex:1;text-align:center;position:relative;padding:0 .8rem}
+.step-num{width:56px;height:56px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--accent);background:var(--canvas);position:relative;z-index:2;transition:background .4s,color .4s,transform .4s}
+.step:hover .step-num{background:var(--accent);color:var(--canvas);transform:scale(1.08)}
+.step-label{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.4rem}
+.step-desc{font-size:.92rem;color:var(--text-secondary);font-weight:300;line-height:1.65}
+@media(max-width:768px){
+  .process-steps{flex-direction:column;gap:2rem;align-items:flex-start}
+  .process-steps::before{display:none}
+  .step{display:flex;gap:1rem;align-items:flex-start;text-align:right}
+  .step-num{flex-shrink:0;width:44px;height:44px;margin:0}
+}
+
+/* ---- WORK BLOCKS (political / commercial) ---- */
+#political{background:#150E1E;padding:7rem 2rem}
+#commercial{background:var(--canvas);padding:7rem 2rem}
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.case-card{background:var(--panel);border-radius:14px;overflow:hidden;border:1px solid rgba(140,107,174,.08);transition:border-color .3s,transform .3s}
+.case-card:has(.case-links):hover{border-color:rgba(140,107,174,.2);transform:translateY(-3px)}
+/* 4:3 עם contain — התמונה נכנסת שלמה ולא נחתכת. פוסטים ריבועיים
+   ולאורך נחתכו קודם באמצע ואיבדו את הטקסט שבתחתית. */
+.case-card-img{aspect-ratio:4/3;overflow:hidden;background:#241633}
+.case-card-img img{width:100%;height:100%;object-fit:contain;transition:transform .5s var(--ease-out)}
+.case-card:has(.case-links):hover .case-card-img img{transform:scale(1.05)}
+.case-card-body{padding:1.5rem}
+/* התגית יושבת בתחתית הכרטיס: קודם הכותרת והמסר, הקרדיט אחריהם */
+.case-card-tag{font-family:var(--mono);font-style:italic;font-size:.8rem;color:var(--lilac-text);letter-spacing:.02em;line-height:1.7;margin-top:1.3rem;padding-top:.9rem;border-top:1px solid rgba(140,107,174,.16)}
+.case-card-title{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:.55rem;line-height:1.3}
+.case-card-stat{font-family:var(--mono);font-style:italic;font-size:.95rem;color:var(--accent);margin-bottom:.75rem;line-height:1.6}
+.case-card-desc{font-size:.98rem;color:var(--text-secondary);font-weight:300;line-height:1.75}
+.case-links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.case-links a{font-family:var(--mono);font-style:italic;font-size:.85rem;color:var(--accent);text-decoration:none;padding:.45rem 1rem;border:1px solid rgba(245,206,36,.3);border-radius:20px;transition:background .25s,border-color .25s}
+.case-links a:hover{background:var(--accent-muted);border-color:rgba(245,206,36,.5)}
+.case-links a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.case-card-no-img{height:200px;background:linear-gradient(135deg,var(--panel) 0%,#3D2A54 100%);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+
+@media(max-width:768px){.cases-grid{grid-template-columns:1fr}}
+
+/* ---- MEETING ---- */
+#meeting{background:#150E1E;padding:7rem 2rem}
+.meeting-box{background:var(--panel);border-radius:18px;padding:3rem;max-width:800px;margin:0 auto;border:1px solid rgba(245,206,36,.1);position:relative;overflow:hidden}
+.meeting-box::before{content:"";position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:var(--accent);opacity:.03;border-radius:50%;filter:blur(80px);pointer-events:none}
+.meeting-icon{font-size:2.5rem;margin-bottom:1rem}
+.meeting-box h2{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:clamp(1.4rem,2.8vw,1.9rem);margin-bottom:.8rem}
+.meeting-promise{font-size:1.15rem;color:var(--text-secondary);font-weight:300;line-height:1.8;margin-bottom:1.5rem}
+.meeting-topics{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-bottom:2rem}
+.meeting-topics li{font-size:1rem;color:var(--text-secondary);font-weight:300;padding-right:1.4rem;position:relative}
+.meeting-topics li::before{content:"✦";position:absolute;right:0;color:var(--accent);font-size:.75rem;top:.35em}
+.meeting-note{font-size:.92rem;color:var(--lilac-text);font-weight:300;font-style:italic}
+@media(max-width:600px){.meeting-topics{grid-template-columns:1fr}}
+
+/* ---- HOW I WORK ---- */
+#how{background:linear-gradient(180deg,var(--canvas) 0%,#150E1E 100%);padding:7rem 2rem}
+.how-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:2.5rem}
+.how-card{background:var(--panel);border-radius:14px;padding:2rem;border:1px solid rgba(140,107,174,.08);transition:border-color .3s}
+.how-card:hover{border-color:rgba(140,107,174,.2)}
+.how-card h3{font-family:'Rubik','Assistant',sans-serif;font-weight:700;font-size:1.25rem;margin-bottom:.6rem}
+.how-card p{font-size:1rem;color:var(--text-secondary);font-weight:300;line-height:1.75}
+.reliability{grid-column:1/-1;background:linear-gradient(135deg,var(--panel) 0%,#3A2650 100%);border-color:rgba(245,206,36,.12)}
+.reliability h3{color:var(--accent)}
+@media(max-width:768px){.how-grid{grid-template-columns:1fr}.reliability{grid-column:auto}}
+
+/* ---- CTA ---- */
+#cta{background:linear-gradient(180deg,var(--canvas) 0%,#0F0A17 100%);padding:7rem 2rem;text-align:center}
+.cta-box{max-width:700px;margin:0 auto}
+.cta-box .section-h2{text-align:center}
+.cta-questions{text-align:right;background:var(--panel);border-radius:14px;padding:2rem;margin:2rem auto;max-width:500px;border:1px solid rgba(140,107,174,.08)}
+.cta-questions ol{list-style:none;counter-reset:q}
+.cta-questions li{counter-increment:q;padding:.5rem 0;border-bottom:1px solid rgba(140,107,174,.06);font-size:.9rem;color:var(--text-secondary);font-weight:300;display:flex;gap:.8rem;align-items:baseline}
+.cta-questions li:last-child{border-bottom:none}
+.cta-questions li::before{content:counter(q);font-family:var(--mono);font-size:.7rem;color:var(--accent);flex-shrink:0}
+.cta-btn-row{margin-top:2rem}
+.cta-note{margin-top:1rem;font-size:.9rem;color:var(--text-secondary);font-weight:300}
+
+/* הערת אגב — לא תגית סקשן, ולכן בלי המרקור הצהוב */
+.aside-note{font-family:var(--mono);font-style:italic;font-size:.92rem;color:var(--lilac-text);text-align:center;margin-bottom:1.4rem}
+
+/* ---- FOOTER ---- */
+footer{background:#0F0A17;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(140,107,174,.06)}
+footer p{font-size:.88rem;color:var(--text-secondary);font-weight:300;line-height:1.8;max-width:600px;margin:0 auto}
+footer .colophon{margin-top:1rem;font-size:.8rem;color:var(--lilac-text);opacity:.85}
+.footer-social{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+.social-link{color:var(--text-secondary);transition:color .25s,transform .25s;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(140,107,174,.15);text-decoration:none}
+.social-link:hover{color:var(--accent);border-color:rgba(245,206,36,.3);transform:translateY(-2px)}
+.social-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---- AMBIENT ---- */
+.env-layer{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04}
+.env-layer::before{content:"";position:absolute;inset:-20%;background:conic-gradient(from 0deg at 50% 50%,var(--lilac),var(--accent),var(--canvas),var(--lilac));animation:envSpin 60s linear infinite;filter:blur(140px)}
+@keyframes envSpin{to{transform:rotate(360deg)}}
+
+/* ---- INTERACTIVE HOLD ---- */
+.hold-section{text-align:center;padding:5rem 2rem;position:relative}
+.hold-ring{width:120px;height:120px;margin:0 auto 1.5rem;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hold-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hold-ring circle.track{fill:none;stroke:rgba(140,107,174,.15);stroke-width:3}
+.hold-ring circle.fill{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:339.292;stroke-dashoffset:339.292;stroke-linecap:round;transition:stroke-dashoffset .1s}
+.hold-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-style:italic;font-size:.7rem;color:var(--text-secondary);pointer-events:none;transition:color .3s}
+.hold-ring.active .hold-label{color:var(--accent)}
+.hold-result{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);margin-top:1rem}
+.hold-result.show{opacity:1;transform:translateY(0)}
+.hold-result p{font-size:1.05rem;color:var(--text-secondary);font-weight:300}
+.hold-result strong{color:var(--text-primary);font-weight:700}
+
+/* ---- REDUCED MOTION ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .hero-glow{animation:none}
+  .env-layer::before{animation:none}
+  .scroll-cue svg{animation:none}
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:480px){
+  section{padding:4rem 1.2rem}
+  .section-h2{font-size:1.5rem}
+  .hero-content{padding:0 1.2rem}
+  .meeting-box{padding:2rem 1.5rem}
+}
+
+/* חייב להישאר אחרון בגיליון:
+   הרווח העליון של #problem מוגדר למעלה, וכלל מאוחר יותר גובר עליו.
+   בלי זה נפער חור בין ההירו לסקשן הראשון במובייל. */
+@media(max-width:720px){
+  #problem{padding-top:4rem}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">דלג לתוכן</a>
+
+<div class="env-layer" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav aria-label="ניווט ראשי">
+  <a href="#" class="nav-name">אוריה כוכב<span class="nav-star" aria-hidden="true">★</span></a>
+  <button class="nav-toggle" aria-label="תפריט" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <ul class="nav-links">
+    <li><a href="#problem">הבעיה</a></li>
+    <li><a href="#political">פוליטי וציבורי</a></li>
+    <li><a href="#commercial">מסחרי ומותגים</a></li>
+    <li><a href="#how">איך אני עובדת</a></li>
+    <li><a href="#meeting">פגישת פיצוח</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="פתיחה">
+  <div class="hero-sticky">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <!-- Band 0: Name + tagline (always visible at top, fades on scroll) -->
+    <div class="band" data-band="0" style="--k:1">
+      <div class="hero-content">
+        <div class="hero-name" data-split="scatter">אוריה כוכב</div>
+        <div class="hero-tagline">קריאייטיב, תסריטים והפקת תוכן</div>
+        <div class="hero-line" data-split="drift">כל מה שבין ״אנחנו צריכים תוכן״ ל״זה באוויר״.</div>
+        <div class="hero-cta-row">
+          <a href="#political" class="btn btn-ghost">לראות עבודות</a>
+          <a href="https://wa.me/972526005459?text=%D7%94%D7%99%D7%99%20%D7%90%D7%95%D7%A8%D7%99%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%91%D7%A8%D7%99%D7%A3%20%D7%A9%D7%90%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A8%D7%90%D7%99" class="btn btn-accent" target="_blank" rel="noopener">שלחו לי את הבריף</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Band 1: The pitch (scrolls in) -->
+    <div class="band" data-band="1" style="opacity:0;--k:0">
+      <div class="hero-content">
+        <div class="hero-line" data-split="punch">בריף מבולגן פנימה.</div>
+        <div class="hero-arrow">רעיון ← קונספט ← מסר ← תוצר ← נוכחות ברשת</div>
+        <div class="hero-sub">החוצה.</div>
+      </div>
+    </div>
+
+    <!-- Band 2: The proof (scrolls in) -->
+    <div class="band" data-band="2" style="opacity:0;--k:0">
+      <div class="hero-content">
+        <div class="hero-line" data-split="grid">כ-90 תסריטים בתשעה חודשים. פרויקט אחד.</div>
+        <div class="hero-sub">מול חמישה עורכים, שישה לקוחות, ותכנון ערוצי הפצה שרוב המפרסמים לא מכירים.</div>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4v12M5 11l5 5 5-5"/></svg>
+      <span>גללו</span>
+    </div>
+  </div>
+</section>
+
+<main id="main" tabindex="-1">
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="section-tag reveal">הבעיה</div>
+    <h2 class="section-h2 reveal">אתם בטוח מכירים את המצב הזה.</h2>
+    <p class="section-sub reveal">קמפיינרים, בעלי עסקים, מנהלי שיווק, סטארטאפיסטים ומפיקים שיודעים שיש להם משהו טוב, ולא יודעים איך להעביר את המסר.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-num">01</div>
+        <h3 class="pain-title">יש בריף, אין כיוון</h3>
+        <p class="pain-body">כולם יודעים שצריך קמפיין. יש תקציב, יש לו"ז. אבל אף אחד בחדר לא יודע מה הרעיון. כל פרילנסר שמגיע מביא את הרעיון הוויראלי שלו, ולא את הסיבה האמיתית שבגללה הקמתם את העסק.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-num">02</div>
+        <h3 class="pain-title">הכל נכתב, שום דבר לא זז</h3>
+        <p class="pain-body">יש תוכן. יש פוסטים. יש סרטונים. אבל כלום לא עובד. הבעיה היא לא הכמות. הבעיה היא שאין רעיון מרכזי שמחזיק את הכל.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-num">03</div>
+        <h3 class="pain-title">יש מוצר טוב, אין שפה</h3>
+        <p class="pain-body">המוצר מצוין. אבל ברגע שצריך להסביר אותו לאנשים, ברגע שצריך סלוגן או קונספט או סרטון, הכל נשמע אותו דבר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 1 — POLITICAL & PUBLIC -->
+<section id="political">
+  <div class="container">
+    <div class="section-tag reveal">פוליטי וציבורי</div>
+    <h2 class="section-h2 reveal">נושא בוער הופך לסרטון דעה שמוכיח את הנקודה.</h2>
+    <p class="section-sub reveal">תסריטים, ויזואל וכותרות שמבוססים על מחקר וקטעי ארכיון.</p>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/telem-hat.jpg" alt="פוסט למגזין תלם — כובע MAKE ISRAEL לגיטימית AGAIN" loading="lazy" width="400" height="200">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">תלם — המגזין של קרן ברל כצנלסון</div>
+          <div class="case-card-stat">מאמר עומק נכנס. פוסט אחד יוצא.</div>
+          <p class="case-card-desc">הבריף היה ״תעשי מזה פוסט״. השאלה האמיתית הייתה אחרת: מאיזו זווית מושכים מישהו שגולל ולא התכוון לקרוא כלום. לא מה חשוב במאמר — הכותב כבר יודע את זה. מה עוצר אצבע. בנוסף: שפה ויזואלית לפוסטים וכתיבת הניוזלטר. 23 פוסטים בתשעה שבועות.</p>
+          <div class="case-links">
+            <a href="https://telem.berl.org.il/" target="_blank" rel="noopener">המגזין ↗</a>
+            <a href="https://www.instagram.com/p/DcRTdwClqlV/" target="_blank" rel="noopener">פוסט ראשון ↗</a>
+            <a href="https://www.instagram.com/p/DcYGoEslhWq/" target="_blank" rel="noopener">פוסט שני ↗</a>
+            <a href="https://www.instagram.com/p/DciL5pFljHe/" target="_blank" rel="noopener">פוסט שלישי ↗</a>
+            <a href="https://www.instagram.com/p/Dbpj4BWCFDQ/" target="_blank" rel="noopener">פוסט רביעי ↗</a>
+            <a href="https://www.instagram.com/p/DbaDgjriHSD/" target="_blank" rel="noopener">פוסט חמישי ↗</a>
+          </div>
+          <div class="case-card-tag">קריאייטיב, שפה ויזואלית, קאפשנים וניוזלטר · ליווי עריכת הרילס · עבודה משותפת עם הקמפיינר</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/zamir-budget.jpg" alt="פוסט בנושא תקציב 2026 של עיריית תל אביב" loading="lazy">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">אסף זמיר</div>
+          <div class="case-card-stat">לא רק איך עוצרים אצבע — מה שווה להיאמר</div>
+          <p class="case-card-desc">דמות ציבורית בתפקיד פעיל לא צריכה שיבחינו בה. היא צריכה שמה שהיא אומרת יחזיק. זה הופך את השאלה: לא איך עוצרים גלילה, אלא מה בכלל שווה להיאמר מהמקום הזה — ומה לא. למי שיש לו עמדה, משפט בינוני עולה יותר משתיקה. כאן הקריאייטיב לא היה ביצוע של בריף. הוא היה חלק מההחלטה מה הסיפור.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/p/DS-aWt9D3Wf/" target="_blank" rel="noopener">תקציב 2026 ↗</a>
+            <a href="https://www.instagram.com/p/DTr_bT8DHK5/" target="_blank" rel="noopener">הנוקמים ↗</a>
+          </div>
+          <div class="case-card-tag">קריאייטיב וכתיבה לרשתות · עבודה משותפת עם הקמפיינר</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-body" style="padding-top:2rem">
+          <div class="case-card-title">נמרוד שפר</div>
+          <div class="case-card-stat">לכתוב בקול של מישהו אחר, בזמן שהנושא עוד בוער.</div>
+          <p class="case-card-desc">זירה פוליטית, לוח זמנים של חדשות. הנושא מגיע בוער, הטקסט צריך לצאת בזמן שהוא עדיין רלוונטי, וכל מילה עוברת אישור לפני שהיא עולה. מהר, בלי לפספס את הרגע ובלי לחרוג מהקווים.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/reel/DZXWGy1qq3d/" target="_blank" rel="noopener">סטיץ׳ ↗</a>
+          </div>
+          <div class="case-card-tag">כתיבה לרשתות וסטיצ׳ים אקטואליים · עבודה משותפת עם הקמפיינר</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-body" style="padding-top:2rem">
+          <div class="case-card-title">סדרת סרטונים פוליטיים</div>
+          <div class="case-card-stat">כ-90 תסריטים בתשעה חודשים, ללקוח אחד.</div>
+          <p class="case-card-desc">הבריף מגיע בוער ומבולגן: מישהו אמר משהו, צריך סרטון, המסר צריך להיות כזה. סרטון שלא מחזיק בבדיקה לא סתם נכשל, הוא הופך לנטל. לכן כל טענה נשענת על מה שקרה באמת, מתועד, על המסך. וכשהצופה רואה את זה בעצמו, הוא משתכנע לבד. זה עובד הרבה יותר טוב מלהגיד לו מה לחשוב.</p>
+          <div class="case-card-tag">קונספט, תסריטים ובימוי — כולל תכנון ערוצי הפצה שרוב המפרסמים לא מכירים</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/kan-push.jpg" alt="כאן 7.10.360" loading="lazy" width="400" height="200">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">כאן דיגיטל · כאן 7.10.360</div>
+          <div class="case-card-stat">מוזיאון דיגיטלי להנצחת 7 באוקטובר.</div>
+          <p class="case-card-desc">עריכת תוכן — פושים לאפליקציה, כותרות ותקצירים לדיגיטל, באחד מגופי השידור הגדולים בישראל. חומר רגיש שדורש דיוק מוחלט ואימות מול מקור ראשוני. פה טעות אחת היא לא תקלה טכנית, היא פגיעה במשפחות.</p>
+          <div class="case-links">
+            <a href="https://www.710360.kan.org.il/" target="_blank" rel="noopener">המוזיאון הדיגיטלי ↗</a>
+          </div>
+          <div class="case-card-tag">תאגיד השידור הציבורי · פרילנס, למעלה משנה</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 2 — COMMERCIAL & BRANDS -->
+<section id="commercial">
+  <div class="container">
+    <div class="section-tag reveal">מסחרי ומותגים</div>
+    <h2 class="section-h2 reveal">יש מוצר טוב. עכשיו צריך את השפה המדויקת.</h2>
+    <p class="section-sub reveal">הפיצוח יוצא מבעיה עסקית אמיתית, לא מבריף מעוצב. כשהבעיה ברורה, הרעיון הוא לא קישוט. הוא הפתרון, וממנו נוצר כל התוכן.</p>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-card-body" style="padding-top:2rem">
+          <div class="case-card-title">SIXPLAY</div>
+          <div class="case-card-stat">יום צילום הוא בלתי הפיך.</div>
+          <p class="case-card-desc">מה שלא תוכנן מראש לא קיים. אין צילום שלא צולם, ואין יום שני. העבודה התחילה יום קודם, על רשימת הרעיונות: מה בכלל שווה את היום ומה יורד. בצילום עצמו — בימוי לפי מה שנכתב.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/reel/DVMOhBnDKVz/" target="_blank" rel="noopener">רילס ראשון ↗</a>
+            <a href="https://www.instagram.com/reel/DU1CZYbjAu4/" target="_blank" rel="noopener">רילס שני ↗</a>
+            <a href="https://www.instagram.com/reel/DVyr2j6jEuQ/" target="_blank" rel="noopener">רילס שלישי ↗</a>
+          </div>
+          <div class="case-card-tag">כתיבה ובימוי לסדרת רילס · בשיתוף סוכנות</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <a href="https://www.instagram.com/reel/DNxXQo43vhh/" target="_blank" rel="noopener" aria-label="צפייה בריל של בזלת">
+            <img src="assets/img/bazelet.jpg" alt="פוסטים וסרטונים לבירה בזלת" loading="lazy" width="400" height="200">
+          </a>
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">בירה בזלת</div>
+          <div class="case-card-stat">מבשלה מרמת הגולן מול מותגים בגודל אחר.</div>
+          <p class="case-card-desc">הפיצוח לא היה לדבר על הבירה אלא על הרגע שבו שותים אותה: הטיול, הפיקניק, מי בחבורה מחליט מה שותים. קונספטים לפוסטים, הטקסטים עצמם, הנחיות ויזואליות לצוות העיצוב, ורעיונות לפעילויות עוקבים ולמהלך גרילה. 19 פוסטים וסרטונים שעלו לאוויר בקיץ 2025.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/reel/DNxXQo43vhh/" target="_blank" rel="noopener">איך מדמיינים בירה ישראלית ↗</a>
+            <a href="https://www.instagram.com/bazeletbeer/" target="_blank" rel="noopener">העמוד ↗</a>
+          </div>
+          <div class="case-card-tag">קריאייטיב וכתיבה לרשתות · בשיתוף סוכנות</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/mitzuki.jpg" alt="מצוקי דרגות" loading="lazy" width="400" height="200">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">מצוקי דרגות</div>
+          <div class="case-card-stat">מרעיון ליום צילום, ועד הרילס עצמו.</div>
+          <p class="case-card-desc">לפצח את הקונספט, למצוא רפרנסים, לכתוב את התסריט, ללוות את יום הצילום ואת הבימוי, ולהגיע לתוצר מוגמר עם קריאייטיב מדויק.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/reel/DIviOToMeeC/" target="_blank" rel="noopener">רילס ראשון ↗</a>
+            <a href="https://www.instagram.com/reel/DI3lJo8sI1c/" target="_blank" rel="noopener">רילס שני ↗</a>
+            <a href="https://www.instagram.com/reel/DJW7RETMB0c/" target="_blank" rel="noopener">רילס שלישי ↗</a>
+          </div>
+          <div class="case-card-tag">קונספט, תסריט ובימוי · בשיתוף סוכנות</div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/zest.jpg" alt="זסט" loading="lazy" width="400" height="200">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">זסט — אפליקציה למסעדנים</div>
+          <div class="case-card-stat">איך עושים מהכאב של הלקוח רילס?</div>
+          <p class="case-card-desc">קונספטים, רילסים ושמות מוצר שיצאו מתוך מה שמסעדנים באמת צריכים, לא מתוך מצגת מותג.</p>
+          <div class="case-links">
+            <a href="https://www.instagram.com/reel/DGqhPwICfzJ/" target="_blank" rel="noopener">רילס ראשון ↗</a>
+            <a href="https://www.instagram.com/reel/DF7vXG0Nj_L/" target="_blank" rel="noopener">רילס שני ↗</a>
+            <a href="https://www.instagram.com/reel/DFFmKrCIuEC/" target="_blank" rel="noopener">רילס שלישי ↗</a>
+          </div>
+          <div class="case-card-tag">קונספטים, רילסים ושמות מוצר · בשיתוף סוכנות</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--
+<div class="hold-section" id="hold">
+  <div class="container">
+    <div class="section-tag reveal">נסו בעצמכם</div>
+    <h2 class="section-h2 reveal" style="text-align:center">לחצו והחזיקו.</h2>
+    <p class="section-sub reveal" style="text-align:center;margin:0 auto 2rem">ככה מרגיש כשהרעיון מתחיל להתבהר.</p>
+    <div class="hold-ring reveal" role="button" tabindex="0" aria-label="לחצו והחזיקו לחוויה">
+      <svg viewBox="0 0 120 120">
+        <circle class="track" cx="60" cy="60" r="54"/>
+        <circle class="fill" cx="60" cy="60" r="54"/>
+      </svg>
+      <div class="hold-label">החזיקו</div>
+    </div>
+    <div class="hold-result">
+      <p><strong>הרעיון ברור.</strong> עכשיו אפשר לכתוב, לצלם, לערוך, להניע. הפיצוח קורה לפני הביצוע.</p>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- HOW I WORK — מאחד את "חמישה צעדים" ואת "איך אני עובדת" לסקשן אחד -->
+<section id="how">
+  <div class="container">
+    <div class="section-tag reveal">איך אני עובדת</div>
+    <h2 class="section-h2 reveal">תהליך, לא אלתור.</h2>
+    <p class="section-sub reveal">מה שאנשים קוראים לו ״קופי״ הוא אצלי תהליך. כל פרויקט מתחיל מבעיה ומסתיים בתוצר שמדויק לעסק שלכם.</p>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-label">בעיה</div>
+          <div class="step-desc">מה באמת תקוע, לא מה כתוב בבריף.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-label">תובנה</div>
+          <div class="step-desc">הדבר שאף אחד עוד לא אמר בקול.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-label">רעיון</div>
+          <div class="step-desc">הפיצוח. הנקודה שממנה הכל מתחיל להסתדר.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-label">תוצר</div>
+          <div class="step-desc">תסריט, קונספט, קמפיין, שם, סלוגן, מערך שלם.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-label">תנועה</div>
+          <div class="step-desc">התוצר יצא לעולם ועובד. לא נשאר בדרייב.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <h3>מסר ברור, לפני הכל</h3>
+        <p>לפני שמתחילים, אנחנו מגדירים ביחד: מה הבעיה, מי קהל היעד, מה התוצר, מה לו"ז. מתחילים רק אחרי שיש בריף ברור.</p>
+      </div>
+      <div class="how-card reveal">
+        <h3>מחקר לפני כתיבה</h3>
+        <p>כל תסריט וכל פוסט מתחילים ממחקר: קהל, מתחרים, שפה, נתונים. אני בונה עולם תוכן שלם, לא רק תוצרים בודדים.</p>
+      </div>
+      <div class="how-card reveal">
+        <h3>מה יש בתוך תסריט</h3>
+        <p>מחקר רקע, הוק פתיחה, מבנה דרמטורגי, CTA וכיוון ויזואלי לצלם ולעורך. לא טקסט — תוכנית עבודה שלמה לצוות ההפקה.</p>
+      </div>
+      <div class="how-card reveal">
+        <h3>הקמה וביסוס, לא ניהול שוטף</h3>
+        <p>אני מקימה ומבססת ערוצי תוכן מאפס: שפה, מבנה, לו"ז, מערכת הפעלה. בתוך פרויקט הליווי נמשך מהתסריט ועד סרטון גמור, כולל ניהול הגרסאות מול העורכים — ונעצר שם, כשהתוצר מוכן להעלאה. כשהכל עומד, אני מעבירה את המושכות ויוצאת. לא מנהלת תפעולית לטווח ארוך.</p>
+      </div>
+      <div class="how-card reliability reveal">
+        <h3>אמינות ואחריות</h3>
+        <p>כל נתון מאומת מול מקור ראשוני. מה שלא אומת, מסומן במפורש. זכויות תמונות, רישיונות, גילוי נאות. בגוף תקשורת, בארגון פוליטי ובמשרד הפקה, זה לא בונוס. זה ביטוח.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEETING PRODUCT -->
+<section id="meeting">
+  <div class="container">
+    <div class="meeting-box reveal">
+      <div class="section-tag">פגישת פיצוח</div>
+      <h2>נכנסים עם בעיה. יוצאים עם כיוונים.</h2>
+      <p class="meeting-promise">פגישה ממוקדת של שעתיים, ויוצאים עם כיוונים ברורים.</p>
+      <ul class="meeting-topics">
+        <li>שם למוצר או למותג</li>
+        <li>קונספט לקמפיין</li>
+        <li>כיוון לסרטון</li>
+        <li>אסטרטגיית תוכן</li>
+        <li>סלוגן או מסר מרכזי</li>
+        <li>פיצוח בעיה יצירתית</li>
+      </ul>
+      <a href="https://wa.me/972526005459?text=%D7%94%D7%99%D7%99%20%D7%90%D7%95%D7%A8%D7%99%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A4%D7%92%D7%99%D7%A9%D7%AA%20%D7%A4%D7%99%D7%A6%D7%95%D7%97%3F" class="btn btn-accent" target="_blank" rel="noopener">שיחה בוואטסאפ</a>
+      <p class="meeting-note">אפשר לפנות גם בלי פרויקט הפקה מלא. לפעמים צריך רק את המוח.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div class="section-tag reveal" style="text-align:center">בואו נדבר</div>
+      <h2 class="section-h2 reveal" style="text-align:center">יודעים מה העסק שלכם צריך? (זה בסדר גם אם לא)</h2>
+      <div class="cta-btn-row reveal">
+        <a href="https://wa.me/972526005459?text=%D7%94%D7%99%D7%99%20%D7%90%D7%95%D7%A8%D7%99%D7%94%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8.%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98%3F" class="btn btn-accent" target="_blank" rel="noopener">20 דקות בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS — PERSONAL -->
+<section id="vitaminchik">
+  <div class="container" style="padding-top:2rem;padding-bottom:2rem">
+    <div class="aside-note reveal">דברים שרציתי לפרסם ועדיין לא הייתה לי הזדמנות</div>
+    <div class="cases-grid" style="max-width:480px;margin:0 auto">
+      <div class="case-card reveal">
+        <div class="case-card-img">
+          <img src="assets/img/vitaminchik.jpg" alt="ויטמינצ'יק — שלושה בקבוקי קוקטייל עם עיצוב האריזה" loading="lazy" width="400" height="200">
+        </div>
+        <div class="case-card-body">
+          <div class="case-card-title">ויטמינצ'יק 18+</div>
+          <div class="case-card-stat">זה לקוקטיילים בכלל.</div>
+          <p class="case-card-desc">מיתוג מלא למותג קוקטיילים: לוגו, פלטת צבעים, פטרן, עיצוב מוצר ואריזה.</p>
+          <div class="case-links">
+            <a href="assets/img/vitaminchik-full.jpg" target="_blank" rel="noopener">הבורד המלא ↗</a>
+          </div>
+          <div class="case-card-tag">פרויקט לימודים — מיתוג</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/oriyakochav/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+  </div>
+  <p>אוריה כוכב · פיצוח יצירתי<br>כל הזכויות שמורות © 2026</p>
+  <p>בגלל הסכמי סודיות, חלק מהעבודות מוצגות ללא פרטים מזהים. לתיק המלא, פנו ישירות.</p>
+  <p class="colophon">חלק מהדימויים הדקורטיביים באתר נוצרו בכלי AI.</p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ---- LOAD ---- */
+document.body.classList.add('loaded');
+
+/* ---- NAV SCROLL ---- */
+var nav = document.querySelector('nav');
+var lastY = 0;
+function checkNav(){
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}
+window.addEventListener('scroll', checkNav, {passive:true});
+checkNav();
+
+/* ---- HERO BANDS ---- */
+/* במובייל ההירו סטטי: בלי פיצול אותיות ובלי אנימציית גלילה,
+   כדי שהמסך הראשון לא יהיה ריק. (שינוי גודל חלון דורש רענון) */
+var MOBILE_HERO = window.matchMedia('(max-width:720px)').matches;
+var hero = document.getElementById('hero');
+var bands = [].slice.call(hero.querySelectorAll('.band'));
+var bandRanges = [
+  [0, 0.30],
+  [0.33, 0.63],
+  [0.66, 1.00]
+];
+var scrollCue = hero.querySelector('.scroll-cue');
+
+function heroProgress(){
+  var rect = hero.getBoundingClientRect();
+  var range = hero.offsetHeight - window.innerHeight;
+  if(range <= 0) return 0;
+  return Math.min(1, Math.max(0, -rect.top / range));
+}
+
+function smoothstep(p, e0, e1){
+  var t = Math.min(1, Math.max(0, (p - e0) / (e1 - e0)));
+  return t * t * (3 - 2 * t);
+}
+
+var cachedBandState = bands.map(function(){ return {op:-1, k:-1}; });
+
+function updateBands(){
+  if(MOBILE_HERO) return;
+  var p = heroProgress();
+  // Scroll cue
+  if(scrollCue) scrollCue.style.opacity = p < 0.05 ? String(1 - p * 20) : '0';
+
+  for(var i = 0; i < bands.length; i++){
+    var a = bandRanges[i][0], b = bandRanges[i][1];
+    var f = Math.min(0.12, (b - a) / 2.2);
+    var op, k;
+    if(i === 0){
+      // First band: skip ease-in, just ease-out
+      op = 1 - smoothstep(p, b - f, b);
+      k = 1;
+    } else if(i === bands.length - 1){
+      // Last band: skip ease-out
+      op = smoothstep(p, a, a + f);
+      k = Math.min(1, Math.max(0, (p - a) / Math.min(0.04, (b - a) * 0.35)));
+    } else {
+      op = smoothstep(p, a, a + f) * (1 - smoothstep(p, b - f, b));
+      k = Math.min(1, Math.max(0, (p - a) / Math.min(0.04, (b - a) * 0.35)));
+    }
+
+    // Delta-gate
+    var cache = cachedBandState[i];
+    if(Math.abs(op - cache.op) > 0.005){
+      bands[i].style.opacity = op.toFixed(3);
+      bands[i].classList.toggle('active', op > 0.1);
+      cache.op = op;
+    }
+    if(Math.abs(k - cache.k) > 0.008){
+      bands[i].style.setProperty('--k', k.toFixed(3));
+      cache.k = k;
+      // Update split animations
+      var chars = bands[i].querySelectorAll('.c');
+      for(var ci = 0; ci < chars.length; ci++){
+        chars[ci].style.setProperty('--k', k.toFixed(3));
+      }
+    }
+  }
+}
+
+/* ---- TEXT SPLITTING ---- */
+function rng(seed){
+  var s = seed >>> 0;
+  return function(){
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
+function splitText(el, type){
+  var text = el.textContent.trim();
+  var sr = document.createElement('span');
+  sr.className = 'sr-only';
+  sr.textContent = text;
+  sr.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)';
+
+  var vis = document.createElement('span');
+  vis.setAttribute('aria-hidden', 'true');
+
+  var seed = 42;
+  var rand = rng(seed);
+  var words = text.split(/\s+/);
+  var totalChars = text.replace(/\s/g,'').length;
+  var charIdx = 0;
+
+  words.forEach(function(word, wi){
+    var ws = document.createElement('span');
+    ws.className = 'w';
+    ws.style.display = 'inline-block';
+    ws.style.whiteSpace = 'nowrap';
+
+    if(type === 'punch'){
+      var th = wi / words.length * 0.5;
+      ws.style.setProperty('--th', th.toFixed(3));
+      ws.style.setProperty('--k', '0');
+      ws.style.cssText += ';opacity:var(--kc);transform:scale(calc(0.6 + 0.52*var(--kc)));';
+      ws.style.setProperty('--kc', '0');
+    }
+
+    // רצף ספרות נשאר יחידה אחת. כל ספרה ב-inline-block נפרד מתהפכת ב-RTL (16 -> 61).
+    var tokens = word.match(/\d+|[\s\S]/g) || [];
+    for(var ci = 0; ci < tokens.length; ci++){
+      var cs = document.createElement('span');
+      cs.className = 'c';
+      cs.textContent = tokens[ci];
+      cs.style.display = 'inline-block';
+      if(tokens[ci].length > 1) cs.style.direction = 'ltr';
+      cs.style.willChange = 'transform, opacity';
+
+      if(type === 'scatter'){
+        cs.style.setProperty('--th', (rand() * 0.55).toFixed(3));
+        cs.style.setProperty('--jx', (rand() * 40 - 20) + 'px');
+        cs.style.setProperty('--jy', (rand() * 30 - 15) + 'px');
+        cs.style.setProperty('--jr', (rand() * 16 - 8) + 'deg');
+        cs.style.setProperty('--k', '0');
+        cs.style.cssText += ';--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);transform:translate(calc((1 - var(--kc))*var(--jx,0px)),calc((1 - var(--kc))*var(--jy,0px))) rotate(calc((1 - var(--kc))*var(--jr,0deg)));';
+      } else if(type === 'drift'){
+        cs.style.setProperty('--th', (charIdx / totalChars * 0.4).toFixed(3));
+        cs.style.setProperty('--k', '0');
+        cs.style.cssText += ';--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*-20px));';
+      } else if(type === 'grid'){
+        cs.style.setProperty('--th', (charIdx / totalChars * 0.5 + rand() * 0.06).toFixed(3));
+        cs.style.setProperty('--jx', (rand() * 30 - 15) + 'px');
+        cs.style.setProperty('--k', '0');
+        cs.style.cssText += ';--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);transform:translateX(calc((1 - var(--kc))*var(--jx,0px)));';
+      }
+      charIdx++;
+      ws.appendChild(cs);
+    }
+    vis.appendChild(ws);
+    // Add space between words
+    if(wi < words.length - 1){
+      vis.appendChild(document.createTextNode(' '));
+    }
+  });
+
+  el.textContent = '';
+  el.appendChild(sr);
+  el.appendChild(vis);
+}
+
+// Split hero text (desktop only)
+if(!MOBILE_HERO){
+  var splitEls = hero.querySelectorAll('[data-split]');
+  for(var si = 0; si < splitEls.length; si++){
+    splitText(splitEls[si], splitEls[si].getAttribute('data-split'));
+  }
+}
+
+// Band 0 initial assembly (one-time load ramp)
+var band0 = bands[0];
+var band0Chars = band0.querySelectorAll('.c');
+var band0Words = band0.querySelectorAll('.w');
+var loadStart = performance.now();
+var loadDone = false;
+
+function loadRamp(now){
+  var elapsed = now - loadStart;
+  var loadK = Math.min(1, elapsed / 1200);
+  // ease
+  loadK = loadK * loadK * (3 - 2 * loadK);
+  var scrollK = cachedBandState[0].k;
+  var finalK = Math.max(scrollK >= 0 ? scrollK : 0, loadK);
+  for(var i = 0; i < band0Chars.length; i++){
+    band0Chars[i].style.setProperty('--k', finalK.toFixed(3));
+  }
+  for(var i = 0; i < band0Words.length; i++){
+    band0Words[i].style.setProperty('--k', finalK.toFixed(3));
+    // Compute --kc for punch type
+    var th = parseFloat(band0Words[i].style.getPropertyValue('--th')) || 0;
+    var kc = Math.min(1, Math.max(0, (finalK - th) * 3));
+    band0Words[i].style.setProperty('--kc', kc.toFixed(3));
+  }
+  if(loadK < 1) requestAnimationFrame(loadRamp);
+  else loadDone = true;
+}
+if(!MOBILE_HERO) requestAnimationFrame(loadRamp);
+
+/* ---- SCROLL LOOP ---- */
+var rafId = null;
+
+function onScroll(){
+  if(rafId === null) rafId = requestAnimationFrame(tick);
+}
+
+function tick(){
+  rafId = null;
+  updateBands();
+}
+
+window.addEventListener('scroll', onScroll, {passive:true});
+updateBands();
+
+/* ---- REVEAL OBSERVER ---- */
+var reveals = document.querySelectorAll('.reveal');
+var revObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+    }
+  });
+}, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(function(r){ revObs.observe(r); });
+
+/* ---- HOLD INTERACTION ---- */
+var holdRing = document.querySelector('.hold-ring');
+var holdFill = holdRing ? holdRing.querySelector('.fill') : null;
+var holdLabel = holdRing ? holdRing.querySelector('.hold-label') : null;
+var holdResult = document.querySelector('.hold-result');
+var holdProgress = 0;
+var holdActive = false;
+var holdComplete = false;
+var holdRaf = null;
+var CIRCUMFERENCE = 2 * Math.PI * 54;
+
+function holdTick(){
+  if(holdComplete) return;
+  if(holdActive){
+    holdProgress = Math.min(1, holdProgress + 0.012);
+  } else {
+    holdProgress = Math.max(0, holdProgress - 0.02);
+  }
+  holdFill.style.strokeDashoffset = (CIRCUMFERENCE * (1 - holdProgress)).toFixed(1);
+  holdRing.classList.toggle('active', holdProgress > 0);
+
+  if(holdProgress >= 1){
+    holdComplete = true;
+    holdLabel.textContent = '✦';
+    holdLabel.style.color = 'var(--accent)';
+    holdLabel.style.fontSize = '1.2rem';
+    holdResult.classList.add('show');
+    return;
+  }
+  if(holdProgress > 0){
+    holdRaf = requestAnimationFrame(holdTick);
+  } else {
+    holdRaf = null;
+  }
+}
+
+if(holdRing){
+  function startHold(e){
+    e.preventDefault();
+    if(holdComplete) return;
+    holdActive = true;
+    if(!holdRaf) holdRaf = requestAnimationFrame(holdTick);
+  }
+  function endHold(){
+    holdActive = false;
+    if(!holdRaf && holdProgress > 0) holdRaf = requestAnimationFrame(holdTick);
+  }
+  holdRing.addEventListener('mousedown', startHold);
+  holdRing.addEventListener('touchstart', startHold, {passive:false});
+  holdRing.addEventListener('mouseup', endHold);
+  holdRing.addEventListener('mouseleave', endHold);
+  holdRing.addEventListener('touchend', endHold);
+  holdRing.addEventListener('touchcancel', endHold);
+  holdRing.addEventListener('keydown', function(e){
+    if(e.key === ' ' || e.key === 'Enter'){
+      e.preventDefault();
+      if(holdComplete) return;
+      holdActive = true;
+      if(!holdRaf) holdRaf = requestAnimationFrame(holdTick);
+    }
+  });
+  holdRing.addEventListener('keyup', function(e){
+    if(e.key === ' ' || e.key === 'Enter') endHold();
+  });
+
+  // Reduced motion: instant complete
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    holdProgress = 1;
+    holdComplete = true;
+    holdFill.style.strokeDashoffset = '0';
+    holdLabel.textContent = '✦';
+    holdLabel.style.color = 'var(--accent)';
+    holdLabel.style.fontSize = '1.2rem';
+    holdResult.classList.add('show');
+  }
+}
+
+/* ---- MOBILE NAV ---- */
+var navToggle = document.querySelector('.nav-toggle');
+var navLinksEl = document.querySelector('.nav-links');
+if(navToggle && navLinksEl){
+  navToggle.addEventListener('click', function(){
+    var open = navLinksEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.innerHTML = open
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+  });
+  navLinksEl.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      navLinksEl.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
+    }
+  });
+}
+
+/* ---- PAUSE OFFSCREEN ---- */
+document.addEventListener('visibilitychange', function(){
+  document.body.classList.toggle('paused', document.hidden);
+});
+
+})();
+</script>
+</body>
+</html>
